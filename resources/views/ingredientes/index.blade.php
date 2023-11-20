@@ -1,7 +1,7 @@
 <body>
     <div class="container">
         <br>
-        <a href="{{ route('ingredientes.create') }}" class="btn btn-primary">Novo Tipo Ingrediente</a>
+        <a href="{{ route('ingredientes.create') }}" class="btn btn-primary">Novo Ingrediente</a>
         <table class="table">
             <thead>
                 <tr>
@@ -19,7 +19,7 @@
                         <td class="colunas">{{ $ingredientes->id }}</td>
                         <td id="nome">{{ $ingredientes->nome }}</td>
                         <td class="colunas">{{ $ingredientes->qnt_un }}</td>
-                        <td class="colunas">{{ $ingredientes->vlor }}</td>
+                        <td class="colunas">{{ $ingredientes->valor }}</td>
                         <td class="colunas">{{ $ingredientes->qnt_min }}</td>
                         <td class="colunas">{{ $ingredientes->tipo_ingrediente_id }}</td>
                         <td>

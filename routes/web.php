@@ -3,8 +3,11 @@
 use App\Http\Controllers\IngredientesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Tipo_ingredienteController;
-use App\Models\Tipo_ingrediente;
+use App\Http\Controllers\ReceitasController;
+use App\Http\Controllers\PedidosController;
+use App\Http\Controllers\ComprasController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,5 +47,11 @@ Route::resource('tipo_ingrediente', Tipo_ingredienteController::class);
 // DELETE /tipo_ingrediente/{id}: Excluir um tipo_ingrediente do banco de dados (destroy)
 
 Route::resource('ingredientes', IngredientesController::class);
+
+Route::resource('receitas', ReceitasController::class);
+
+Route::resource('pedidos', PedidosController::class);
+
+Route::resource('compras', ComprasController::class);
 
 require __DIR__.'/auth.php';
