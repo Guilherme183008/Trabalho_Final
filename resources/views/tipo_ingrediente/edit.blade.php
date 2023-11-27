@@ -1,5 +1,9 @@
-<body>
-    <div class="container">
+{{-- resources/views/admin/dashboard.blade.php --}}
+@extends('adminlte::page')
+
+@section('title', 'Editar Tipo')
+
+@section('content')
         <h1>Editar Tipo Ingrediente</h1>
         <form action="{{ route('tipo_ingrediente.update', $tipo_ingrediente->id) }}" method="POST">
             @csrf
@@ -16,5 +20,15 @@
             <button type="submit" class="btn btn-success">Salvar Alterações</button>
             <a href="{{ route('tipo_ingrediente.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
-    </div>
-</body>
+        @stop
+
+        @section('css')
+            <link rel="stylesheet" href="/css/admin_custom.css">
+        @stop
+        
+        @section('js')
+            <script>
+                console.log('Hi!');
+            </script>
+        @stop
+        

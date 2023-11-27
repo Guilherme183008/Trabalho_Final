@@ -9,6 +9,7 @@
 
 @section('content')
     <p>Receitas no cardápio:</p>
+    <a href="{{ route('receitas.create') }}" class="btn btn-success">Nova Receita</a>
     <table class="table table-stripe table-bordered table-hover">
         <thead>
             <th>ID</th>
@@ -29,6 +30,16 @@
                     <td>{{ $receitas->qnt_ingrediente }}</td>
                     <td>{{ $receitas->valor }}</td>
                     <td>{{ $receitas->ingredientes_id }}</td>
+                    <td>
+                        <a href="{{ route('receitas.edit', $receitas->id) }}"
+                            class="btn btn-warning">Editar</a>
+                        <form action="{{ route('receitas.destroy', $receitas->id) }}" method="POST"
+                            style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
