@@ -1,37 +1,38 @@
-<body>
-    <div class="container">
-        <br>
-        <a href="{{ route('compras.create') }}" class="btn btn-primary">Nova Compra</a>
-        <table class="table">
-            <thead>
+{{-- resources/views/admin/dashboard.blade.php --}}
+@extends('adminlte::page')
+
+@section('title', 'Compras')
+
+@section('content_header')
+    <h1>Compras</h1>
+@stop
+
+@section('content')
+    <p>Listagem de Compras realizadas:</p>
+    <table class="table table-stripe table-bordered table-hover">
+        <thead>
+            <th>ID</th>
+            <th>Quantidade</th>
+            <th>Itens</th>
+        </thead>
+        <tbody>
+            @foreach ($compras as $compras)
                 <tr>
-                    <th>ID</th>
-                    <th>Quantidade</th>
-                    <th>Ingredientes</th>
-                    <th>Ações</th>
+                    <td>{{ $compras->id }}</td>
+                    <td>{{ $compras->quantidade }}</td>
+                    <td>{{ $compras->ingredientes_id }}</td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach ($compras as $compras)
-                    <tr>
-                        <td class="colunas">{{ $compras->id }}</td>
-                        <td class="colunas">{{ $compras->quantidade }}</td>
-                        <td class="colunas">{{ $compras->ingredientes_id }}</td>
-                        <td>
-                            <a href="{{ route('compras.show', $compras->id) }}"
-                                class="btn btn-info">Detalhes</a>
-                            <a href="{{ route('compras.edit', $compras->id) }}"
-                                class="btn btn-warning">Editar</a>
-                            <form action="{{ route('compras.destroy', $compras->id) }}" method="POST"
-                                style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Excluir</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</body>
+            @endforeach
+        </tbody>
+    </table>
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script>
+        console.log('Hi!');
+    </script>
+@stop

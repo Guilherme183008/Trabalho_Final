@@ -21,12 +21,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/receitas', function () {
+    return view('receitas');
+})->middleware(['auth', 'verified'])->name('receitas');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,16 +35,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('tipo_ingrediente', Tipo_ingredienteController::class);
-
-// Route::get('/tipo_ingrediente/create', [Tipo_ingredienteController::class, 'create'])->name('tipo_ingrediente.create');
-
-// GET /tipo_ingrediente: Listagem de tipo_ingrediente (index)
-// GET /tipo_ingrediente/create: Formulário para criar um novo tipo_ingrediente (create)
-// POST /tipo_ingrediente: Salvar um novo tipo_ingrediente no banco de dados (store)
-// GET /tipo_ingrediente/{id}: Exibir detalhes de um tipo_ingrediente específico (show)
-// GET /tipo_ingrediente/{id}/edit: Formulário para editar um tipo_ingrediente (edit)
-// PUT/PATCH /tipo_ingrediente/{id}: Atualizar os dados de um tipo_ingrediente no banco de dados (update)
-// DELETE /tipo_ingrediente/{id}: Excluir um tipo_ingrediente do banco de dados (destroy)
 
 Route::resource('ingredientes', IngredientesController::class);
 

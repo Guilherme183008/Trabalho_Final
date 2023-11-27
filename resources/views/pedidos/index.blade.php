@@ -1,37 +1,38 @@
-<body>
-    <div class="container">
-        <br>
-        <a href="{{ route('pedidos.create') }}" class="btn btn-primary">Nova Pedido</a>
-        <table class="table">
-            <thead>
+{{-- resources/views/admin/dashboard.blade.php --}}
+@extends('adminlte::page')
+
+@section('title', 'Pedidos')
+
+@section('content_header')
+    <h1>Pedidos</h1>
+@stop
+
+@section('content')
+    <p>Listagem de Pedidos para compras:</p>
+    <table class="table table-stripe table-bordered table-hover">
+        <thead>
+            <th>ID</th>
+            <th>Quantidade</th>
+            <th>Itens</th>
+        </thead>
+        <tbody>
+            @foreach ($pedidos as $pedidos)
                 <tr>
-                    <th>ID</th>
-                    <th>Quantidade</th>
-                    <th>Ingredientes</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($pedidos as $pedidos)
-                    <tr>
-                        <td class="colunas">{{ $pedidos->id }}</td>
-                        <td class="colunas">{{ $pedidos->quantidade }}</td>
-                        <td class="colunas">{{ $pedidos->ingredientes_id }}</td>
-                        <td>
-                            <a href="{{ route('pedidos.show', $pedidos->id) }}"
-                                class="btn btn-info">Detalhes</a>
-                            <a href="{{ route('pedidos.edit', $pedidos->id) }}"
-                                class="btn btn-warning">Editar</a>
-                            <form action="{{ route('pedidos.destroy', $pedidos->id) }}" method="POST"
-                                style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Excluir</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</body>
+                    <td>{{ $pedidos->id }}</td>
+                    <td>{{ $pedidos->quantidade }}</td>
+                    <td>{{ $pedidos->ingredientes_id }}</td>
+            @endforeach
+            </tr>
+        @stop
+
+        @section('css')
+            <link rel="stylesheet" href="/css/admin_custom.css">
+        @stop
+
+        @section('js')
+            <script>
+                console.log('Hi!');
+            </script>
+        </tbody>
+    </table>
+@stop

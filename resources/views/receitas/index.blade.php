@@ -1,47 +1,46 @@
-<body>
-    <div class="container">
-        <br>
-        <a href="{{ route('receitas.create') }}" class="btn btn-primary">Nova Receita</a>
-        <table class="table">
-            <thead>
+{{-- resources/views/admin/dashboard.blade.php --}}
+@extends('adminlte::page')
+
+@section('title', 'Receitas')
+
+@section('content_header')
+    <h1>Receitas</h1>
+@stop
+
+@section('content')
+    <p>Receitas no cardápio:</p>
+    <table class="table table-stripe table-bordered table-hover">
+        <thead>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Modo Preparo</th>
+            <th>Quantia Ingredientes</th>
+            <th>Valor</th>
+            <th>Ingredientes</th>
+        </thead>
+        <tbody>
+            @foreach ($receitas as $receitas)
                 <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Tipo</th>
-                    <th>Tempo de Preparo</th>
-                    <th>Modo de Preparo</th>
-                    <th>Quantidade de Ingredientes</th>
-                    <th>Valor</th>
-                    <th>Ingredientes</th>
-                    <th>Ações</th>
+                    <td>{{ $receitas->id }}</td>
+                    <td>{{ $receitas->nome }}</td>
+                    <td>{{ $receitas->tipo }}</td>
+                    <td>{{ $receitas->modo_preparo }}</td>
+                    <td>{{ $receitas->qnt_ingrediente }}</td>
+                    <td>{{ $receitas->valor }}</td>
+                    <td>{{ $receitas->ingredientes_id }}</td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach ($receitas as $receitas)
-                    <tr>
-                        <td class="colunas">{{ $receitas->id }}</td>
-                        <td id="nome">{{ $receitas->nome }}</td>
-                        <td class="colunas">{{ $receitas->tipo }}</td>
-                        <td class="colunas">{{ $receitas->modo_preparo }}</td>
-                        <td class="colunas">{{ $receitas->tempo_preparo }}</td>
-                        <td class="colunas">{{ $receitas->qnt_ingrediente }}</td>
-                        <td class="colunas">{{ $receitas->valor }}</td>
-                        <td class="colunas">{{ $receitas->ingredientes_id }}</td>
-                        <td>
-                            <a href="{{ route('receitas.show', $receitas->id) }}"
-                                class="btn btn-info">Detalhes</a>
-                            <a href="{{ route('receitas.edit', $receitas->id) }}"
-                                class="btn btn-warning">Editar</a>
-                            <form action="{{ route('receitas.destroy', $receitas->id) }}" method="POST"
-                                style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Excluir</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</body>
+            @endforeach
+        </tbody>
+    </table>
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script>
+        console.log('Hi!');
+    </script>
+@stop
