@@ -5,9 +5,9 @@
 
 @section('content')
     <h1>Nova Receita</h1>
-    <!-- Token CSRF para proteção contra ataques CSRF -->
-    @csrf
     <form action="{{ route('receitas.store') }}" method="POST">
+        <!-- Token CSRF para proteção contra ataques CSRF -->
+        @csrf
         <div class="form-group">
             <label for="nome">Nome:</label>
             <input type="text" name="nome">

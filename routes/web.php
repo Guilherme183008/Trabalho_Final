@@ -6,8 +6,11 @@ use App\Http\Controllers\Tipo_ingredienteController;
 use App\Http\Controllers\ReceitasController;
 use App\Http\Controllers\PedidosController;
 use App\Http\Controllers\ComprasController;
+use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
-
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +43,9 @@ Route::resource('ingredientes', IngredientesController::class);
 
 Route::resource('receitas', ReceitasController::class);
 
+/*Route::post('/receitas/{receitas}/remover-ingredientes', [ReceitasController::class, 'removerIngredientes'])
+    ->name('remover_ingredientes');
+*/
 Route::resource('pedidos', PedidosController::class);
 
 Route::resource('compras', ComprasController::class);

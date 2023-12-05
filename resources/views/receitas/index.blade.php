@@ -31,10 +31,8 @@
                     <td>{{ $receitas->valor }}</td>
                     <td>{{ $receitas->ingredientes_id }}</td>
                     <td>
-                        <a href="{{ route('receitas.edit', $receitas->id) }}"
-                            class="btn btn-warning">Editar</a>
-                        <form action="{{ route('receitas.destroy', $receitas->id) }}" method="POST"
-                            style="display: inline;">
+                        <a href="{{ route('receitas.edit', $receitas->id) }}" class="btn btn-warning">Editar</a>
+                        <form action="{{ route('receitas.destroy', $receitas->id) }}" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Excluir</button>

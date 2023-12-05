@@ -325,6 +325,7 @@ return [
             'icon' => 'fas fa-fw fa-align-justify',
         ],
 
+    
         /*[
             'type'         => 'navbar-search',
             'text'         => 'search',

@@ -70,6 +70,21 @@ class ReceitasController extends Controller
         
         return redirect()->route('receitas.index');
     }
+
+    
+    /*public function removerIngredientes($receitaId)
+{
+    // Obter a receitas específica pelo ID
+    $receitas = Receitas::findOrFail($receitaId);
+
+    // Iterar sobre os ingredientes da receitas e subtrair a quantidade de unidades
+    foreach ($receitas->ingredientes as $ingrediente) {
+        $ingrediente->qnt_un -= $receitas->qnt_ingrediente;
+        $ingrediente->save();
+    }
+
+    return redirect()->back()->with('success', 'Quantidade de ingredientes subtraída com sucesso!');
+}*/
     public function destroy($id)
     {
         
