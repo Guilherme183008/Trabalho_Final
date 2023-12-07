@@ -64,6 +64,11 @@ class PedidosController extends Controller
        
         $pedidos->quantidade = $request->input('quantidade');
         $pedidos->ingredientes_id = $request->input('ingredientes_id');
+
+        $request->validate([
+            'quantidade' => 'required|numeric',
+            'ingredientes_id' => 'numeric',
+        ]);
     
         $pedidos->save();
         

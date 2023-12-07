@@ -53,6 +53,11 @@ class Tipo_ingredienteController extends Controller {
         $tipo_ingrediente->nome = $request->input('nome');
         $tipo_ingrediente->descricao = $request->input('descricao');
 
+        $request->validate([
+            'nome' => 'required|string',
+            'descricao' => 'required|string',
+        ]);
+
 
         $tipo_ingrediente->save();
 

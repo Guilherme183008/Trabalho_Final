@@ -53,6 +53,7 @@ class IngredientesController extends Controller {
     public function edit($id) {
 
         $ingredientes = Ingredientes::findOrFail($id);
+        
 
         return view('ingredientes.edit', compact('ingredientes'));
     }
@@ -65,6 +66,14 @@ class IngredientesController extends Controller {
         $ingredientes->valor = $request->input('valor');
         $ingredientes->qnt_min = $request->input('qnt_min');
         $ingredientes->tipo_ingrediente_id = $request->input('tipo_ingrediente_id');
+
+        $request->validate([
+            'nome' => 'required|string',
+            'qnt_un' => 'required|numeric',
+            'valor' => 'numeric',
+            'qnt_min' => 'numeric',
+            'tipo_ingrediente_id' => 'numeric',
+        ]);
 
 
         $ingredientes->save();

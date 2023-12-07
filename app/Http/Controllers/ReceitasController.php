@@ -77,6 +77,16 @@ class ReceitasController extends Controller {
         $receitas->valor = $request->input('valor');
         $receitas->ingredientes_id = $request->input('ingredientes_id');
 
+        $request->validate([
+            'nome' => 'required|string',
+            'tipo' => 'required|string',
+            'tempo_preparo' => 'required|numeric',
+            'modo_preparo' => 'required|string',
+            'qnt_ingrediente' => 'required|numeric',
+            'valor' => 'numeric',
+            'ingredientes_id' => 'numeric',
+        ]);
+
         $receitas->save();
 
         return redirect()->route('receitas.index');

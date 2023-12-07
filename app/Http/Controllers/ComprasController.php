@@ -71,6 +71,11 @@ class ComprasController extends Controller
         $compras->quantidade = $request->input('quantidade');
         $compras->ingredientes_id = $request->input('ingredientes_id');
 
+        $request->validate([
+            'quantidade' => 'required|numeric',
+            'ingredientes_id' => 'numeric',
+        ]);
+
         $compras->save();
 
         return redirect()->route('compras.index');

@@ -5,6 +5,15 @@
 
 @section('content')
     <h1>Editar Receita</h1>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form action="{{ route('receitas.update', $receitas->id) }}" method="POST">
         @csrf
         @method('PUT')
