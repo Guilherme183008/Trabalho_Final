@@ -12,6 +12,10 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+    <link href="{{ asset('css/sweetalert2.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -30,19 +34,19 @@
         @endif
 
         @if ($errors->any())
-                <div role="alert">
-                    @foreach ($errors->all() as $error)
-                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-2">
-                            <strong class="font-bold">Erro!</strong>
-                            <span class="block sm:inline">{{ $error }}</span>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
+            <div role="alert">
+                @foreach ($errors->all() as $error)
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-2">
+                        <strong class="font-bold">Erro!</strong>
+                        <span class="block sm:inline">{{ $error }}</span>
+                    </div>
+                @endforeach
+            </div>
+        @endif
 
         <!-- Page Content -->
         <main>
-            
+
             {{ $slot }}
         </main>
     </div>

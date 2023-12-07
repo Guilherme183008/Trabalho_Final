@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pedidos;
+use Illuminate\Support\Facades\DB;
 
 class PedidosController extends Controller
 {
     public function index()
     {
         
-        $pedidos = Pedidos::all();
+        $pedidos = DB::table('pedidos')
+        ->join('ingredientes', 'pedidos.ingredientes_id', '=', 'ingredientes.id')
+        ->select('pedidos.*', 'ingredientes.nome as nome_ingrediente')
+        ->get();
        
         return view('pedidos.index', compact('pedidos'));
         
@@ -28,6 +32,11 @@ class PedidosController extends Controller
             'quantidade' => $request->input('quantidade'),
             'ingredientes_id' => $request->input('ingredientes_id'),
 
+        ]);
+
+        $request->validate([
+            'quantidade' => 'required|numeric',
+            'ingredientes_id' => 'numeric',
         ]);
         
         $pedidos->save();

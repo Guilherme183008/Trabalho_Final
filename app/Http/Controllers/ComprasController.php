@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Compras;
 use App\Models\ingredientes;
+use Illuminate\Support\Facades\DB;
 
 class ComprasController extends Controller
 {
     public function index()
     {
 
-        $compras = Compras::all();
+        $compras = DB::table('compras')
+        ->join('ingredientes', 'compras.ingredientes_id', '=', 'ingredientes.id')
+        ->select('compras.*', 'ingredientes.nome as nome_ingrediente')
+        ->get();
 
         return view('compras.index', compact('compras'));
 
@@ -29,6 +33,11 @@ class ComprasController extends Controller
             'quantidade' => $request->input('quantidade'),
             'ingredientes_id' => $request->input('ingredientes_id'),
 
+        ]);
+
+        $request->validate([
+            'quantidade' => 'required|numeric',
+            'ingredientes_id' => 'numeric',
         ]);
 
         $compras->save();

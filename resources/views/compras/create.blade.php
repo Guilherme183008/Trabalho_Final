@@ -5,6 +5,15 @@
 
 @section('content')
     <h1>Nova Compra</h1>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <form action="{{ route('compras.store') }}" method="POST">
         <!-- Token CSRF para proteção contra ataques CSRF -->
         @csrf

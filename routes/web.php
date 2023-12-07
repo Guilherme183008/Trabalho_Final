@@ -43,11 +43,10 @@ Route::resource('ingredientes', IngredientesController::class);
 
 Route::resource('receitas', ReceitasController::class);
 
-/*Route::post('/receitas/{receitas}/remover-ingredientes', [ReceitasController::class, 'removerIngredientes'])
-    ->name('remover_ingredientes');
-*/
 Route::resource('pedidos', PedidosController::class);
 
 Route::resource('compras', ComprasController::class);
+
+Route::put('/receitas/prepareDish/{ingredientes_id}/{qnt_ingrediente}', [ReceitasController::class, 'prepareDish'])->name('receitas.prepareDish');;
 
 require __DIR__.'/auth.php';

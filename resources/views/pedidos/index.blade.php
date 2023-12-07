@@ -21,7 +21,7 @@
                 <tr>
                     <td>{{ $pedidos->id }}</td>
                     <td>{{ $pedidos->quantidade }}</td>
-                    <td>{{ $pedidos->ingredientes_id }}</td>
+                    <td>{{ $pedidos->nome_ingrediente }}</td>
                     <td>
                         <a href="{{ route('pedidos.edit', $pedidos->id) }}"
                             class="btn btn-warning">Editar</a>

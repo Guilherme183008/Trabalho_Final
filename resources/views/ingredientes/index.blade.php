@@ -27,7 +27,7 @@
                     <td>{{ $ingredientes->qnt_un }}</td>
                     <td>{{ $ingredientes->valor }}</td>
                     <td>{{ $ingredientes->qnt_min }}</td>
-                    <td>{{ $ingredientes->tipo_ingrediente_id }}</td>
+                    <td>{{ $ingredientes->nome_tipo }}</td>
                     <td>
                         <a href="{{ route('ingredientes.edit', $ingredientes->id) }}"
                             class="btn btn-warning">Editar</a>

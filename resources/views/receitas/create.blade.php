@@ -5,6 +5,15 @@
 
 @section('content')
     <h1>Nova Receita</h1>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form action="{{ route('receitas.store') }}" method="POST">
         <!-- Token CSRF para proteção contra ataques CSRF -->
         @csrf
@@ -40,6 +49,7 @@
 
         <button type="submit" class="btn btn-success">Salvar</button>
         <a href="{{ route('receitas.index') }}" class="btn btn-secondary">Cancelar</a>
+
     </form>
 @stop
 

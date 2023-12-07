@@ -21,7 +21,7 @@
                 <tr>
                     <td>{{ $compras->id }}</td>
                     <td>{{ $compras->quantidade }}</td>
-                    <td>{{ $compras->ingredientes_id }}</td>
+                    <td>{{ $compras->nome_ingrediente }}</td>
                     <td>
                         <a href="{{ route('compras.edit', $compras->id) }}" class="btn btn-warning">Editar</a>
                         <form action="{{ route('compras.destroy', $compras->id) }}" method="POST" style="display: inline;">
